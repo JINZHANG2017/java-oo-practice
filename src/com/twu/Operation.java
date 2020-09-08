@@ -26,9 +26,9 @@ public class Operation {
     public void operate(){
         while(true){
             System.out.println("请输入用户名：");
-            String username=sc.nextLine();
+            String username=sc.next();
             System.out.println("请输入密码：");
-            String password=sc.nextLine();
+            String password=sc.next();
             //验证用户名密码
             currentUser=userService.getAuthUser(username,password);
             if(currentUser==null){
@@ -46,7 +46,7 @@ public class Operation {
     private void processOrdinUser() {
         while(true){
             System.out.println("请输入要进行的操作：\n1、查看热搜排行榜\n2、给热搜事件投票\n3、购买热搜\n4、添加热搜\n5、退出登录");
-            String action=sc.nextLine();
+            String action=sc.next();
             switch (action){
                 case "1":hotpotService.printList();break;
                 case "2":vote();break;
@@ -65,7 +65,7 @@ public class Operation {
     private void processAdmin() {
         while(true){
             System.out.println("请输入要进行的操作：\n1、查看热搜排行榜\n2、添加热搜\n3、添加超级热搜\n4、退出登录");
-            String action=sc.nextLine();
+            String action=sc.next();
             switch (action){
                 case "1":hotpotService.printList();break;
                 case "2":addHotpot(false);break;
@@ -82,7 +82,7 @@ public class Operation {
     //添加热搜
     private void addHotpot(boolean isSuperHotpot) {
         System.out.println("请输入热搜名称：");
-        String name = sc.nextLine();
+        String name = sc.next();
         int re=hotpotService.addHotpot(name,isSuperHotpot);
         if(re==0){
             System.out.println("热搜添加成功！");
@@ -143,6 +143,7 @@ public class Operation {
             if(result>=0){
                 System.out.println("投票成功");
                 System.out.printf("当前用户剩余%d票",result);
+                System.out.println();
 //                System.out.println("当前用户剩余"+result+"票");
                 break;
             }else {
